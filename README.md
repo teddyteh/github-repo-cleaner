@@ -1,3 +1,5 @@
+# GitHub Utils
+
 ## Usage
 
 - Run `chmod +x delete-all-action-runs.sh` followed by `delete-all-action-runs.sh`.
