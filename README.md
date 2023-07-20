@@ -5,30 +5,24 @@ This utility provides functionalities to clean up various components of a GitHub
 ## Prerequisites
 
 - `bash`
-- `jq` (for processing JSON)
+- `git`
 - `gh` (GitHub CLI)
 - `curl`
-- `git`
+- `jq` (for processing JSON)
 
-## Setup
+## Installation
 
-1.  **Install Prerequisites**:
-    - Ensure you have all the prerequisites installed.
-2.  **Clone the Repository**:
-    - Clone the repository to your local machine.
-3.  **Navigate to the Directory**:
-    - Move to the directory containing the cleanup script.
-4.  **Make the Script Executable**:
-
-    bashCopy code
-
-    `chmod +x delete-everything.sh`
+```
+npm i -g github-repo-cleaner
+```
 
 ## Usage
 
 ### Basic Command:
 
-`./delete-everything.sh <user/repo> <token> [options]`
+```
+./delete-everything.sh <user/repo> <token> [options]
+```
 
 ### Required Arguments:
 
@@ -47,15 +41,15 @@ This utility provides functionalities to clean up various components of a GitHub
 
 To delete all tags and action runs for a specific repository:
 
-bashCopy code
-
-`./delete-everything.sh username/myrepo myaccesstoken --deleteTags --deleteActionRuns`
+```
+clean-repo username/myrepo myaccesstoken --deleteTags --deleteActionRuns
+```
 
 To specify certain action run IDs to ignore:
 
-bashCopy code
-
-`./delete-everything.sh username/myrepo myaccesstoken --ignoreIds=1234,5678`
+```
+clean-repo username/myrepo myaccesstoken --ignoreIds=1234,5678
+```
 
 ## Warning
 

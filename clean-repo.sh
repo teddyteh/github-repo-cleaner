@@ -1,12 +1,17 @@
 #!/bin/bash
 
+if ! command -v git &> /dev/null; then
+    echo "'git' is not installed or not in PATH."
+    exit 1
+fi
+
 if ! command -v gh &> /dev/null; then
     echo "'gh' CLI is not installed or not in PATH."
     exit 1
 fi
 
-if ! command -v git &> /dev/null; then
-    echo "'git' is not installed or not in PATH."
+if ! command -v curl &> /dev/null; then
+    echo "'curl' is not installed or not in PATH."
     exit 1
 fi
 
