@@ -21,7 +21,7 @@ npm i -g github-repo-cleaner
 ### Basic Command:
 
 ```
-./delete-everything.sh <user/repo> <token> [options]
+clean-repo <user/repo> <token> [options]
 ```
 
 ### Required Arguments:
