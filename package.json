@@ -1,0 +1,10 @@
+{
+  "name": "github-repo-cleaner",
+  "version": "1.0.0",
+  "description": "This script provides functionalities to clean up various components of a GitHub repository including tags, action runs, releases, and all commits.",
+  "bin": {
+    "clean-repo": "./clean-repo.sh"
+  },
+  "author": "Teddy",
+  "license": "ISC"
+}
