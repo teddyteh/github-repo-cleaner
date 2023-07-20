@@ -1,6 +1,6 @@
-# GitHub Cleanup Script
+# GitHub Repository Cleaner
 
-This script provides functionalities to clean up various components of a GitHub repository including tags, action runs, releases, and all commits.
+This utility provides functionalities to clean up various components of a GitHub repository including tags, action runs, releases, and all commits.
 
 ## Prerequisites
 

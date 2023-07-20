@@ -1,5 +1,20 @@
 #!/bin/bash
 
+if ! command -v gh &> /dev/null; then
+    echo "'gh' CLI is not installed or not in PATH."
+    exit 1
+fi
+
+if ! command -v git &> /dev/null; then
+    echo "'git' is not installed or not in PATH."
+    exit 1
+fi
+
+if ! command -v jq &> /dev/null; then
+    echo "'jq' is not installed or not in PATH."
+    exit 1
+fi
+
 if [ "$#" -lt 2 ]; then
     echo "Usage: $0 <user/repo> <token> [--deleteTags] [--deleteActionRuns] [--deleteReleases] [--deleteAllCommits] [--ignoreIds=id1,id2,...]"
     exit 1
