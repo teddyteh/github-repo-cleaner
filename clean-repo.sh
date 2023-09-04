@@ -55,7 +55,7 @@ for arg in "$@"; do
     esac
 done
 
-SCRIPT_DIR="$(dirname "$BASH_SOURCE[0]")"
+SCRIPT_DIR=$(npm root -g)/github-repo-cleaner
 
 if [ "$deleteTags" == "true" ]; then
     source "$SCRIPT_DIR/delete-all-tags.sh"
