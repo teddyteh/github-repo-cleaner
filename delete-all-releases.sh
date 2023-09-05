@@ -5,6 +5,11 @@ function delete_all_releases() {
     RELEASES=$(gh api repos/$USER/$REPO/releases -H "Authorization: token $TOKEN")
 
     echo "$RELEASES" | jq -r '.[] | .id' | while read id; do
-        curl --silent --show-error --header "Authorization: token $TOKEN" --request DELETE "https://api.github.com/repos/$USER/$REPO/releases/$id"
+        gh api -X DELETE repos/$USER/$REPO/releases/$id -H "Authorization: token $TOKEN"
+        if [[ $? -ne 0 ]]; then
+            echo "Error occurred while deleting release with ID: $id"
+        else
+            echo "Deleted release with ID: $id"
+        fi
     done
 }

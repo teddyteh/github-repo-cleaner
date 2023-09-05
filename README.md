@@ -7,7 +7,6 @@ This utility provides functionalities to clean up various components of a GitHub
 - `bash`
 - `git`
 - `gh` (GitHub CLI)
-- `curl`
 - `jq` (for processing JSON)
 
 ## Installation
@@ -33,9 +32,10 @@ clean-repo <user/repo> <token> [options]
 
 - `--deleteTags`: Delete all tags.
 - `--deleteActionRuns`: Delete all GitHub Action runs.
+- `--ignoreActionRunIds=id1,id2,...`: Specify action run IDs to ignore.
 - `--deleteReleases`: Delete all releases.
+- `--deleteDeployments`: Delete all deployments.
 - `--deleteAllCommits`: Delete all commits.
-- `--ignoreIds=id1,id2,...`: Specify action run IDs to ignore.
 
 ### Example:
 
@@ -48,7 +48,7 @@ clean-repo username/myrepo myaccesstoken --deleteTags --deleteActionRuns
 To specify certain action run IDs to ignore:
 
 ```
-clean-repo username/myrepo myaccesstoken --ignoreIds=1234,5678
+clean-repo username/myrepo myaccesstoken --ignoreActionRunIds=1234,5678
 ```
 
 ## Warning

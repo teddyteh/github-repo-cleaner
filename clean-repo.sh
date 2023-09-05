@@ -1,27 +1,22 @@
 #!/bin/bash
 
-if ! command -v git &> /dev/null; then
+if ! command -v git &>/dev/null; then
     echo "'git' is not installed or not in PATH."
     exit 1
 fi
 
-if ! command -v gh &> /dev/null; then
+if ! command -v gh &>/dev/null; then
     echo "'gh' CLI is not installed or not in PATH."
     exit 1
 fi
 
-if ! command -v curl &> /dev/null; then
-    echo "'curl' is not installed or not in PATH."
-    exit 1
-fi
-
-if ! command -v jq &> /dev/null; then
+if ! command -v jq &>/dev/null; then
     echo "'jq' is not installed or not in PATH."
     exit 1
 fi
 
 if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 <user/repo> <token> [--deleteTags] [--deleteActionRuns] [--deleteReleases] [--deleteAllCommits] [--ignoreIds=id1,id2,...]"
+    echo "Usage: $0 <user/repo> <token> [--deleteTags] [--deleteActionRuns] [--deleteReleases] [--deleteAllCommits] [--ignoreActionRunIds=id1,id2,...]"
     exit 1
 fi
 
@@ -31,6 +26,7 @@ IGNORE_IDS=()
 
 deleteTags=true
 deleteActionRuns=true
+deleteAllDeployments=true
 deleteReleases=true
 deleteAllCommits=false
 
@@ -43,14 +39,17 @@ for arg in "$@"; do
     --deleteActionRuns)
         deleteActionRuns=true
         ;;
+    --ignoreActionRunIds=*)
+        IFS=',' read -ra IGNORE_IDS <<<"${arg#--ignoreActionRunIds=}"
+        ;;
+    --deleteAllDeployments)
+        deleteAllDeployments=true
+        ;;
     --deleteReleases)
         deleteReleases=true
         ;;
     --deleteAllCommits)
         deleteAllCommits=true
-        ;;
-    --ignoreIds=*)
-        IFS=',' read -ra IGNORE_IDS <<<"${arg#--ignoreIds=}"
         ;;
     esac
 done
@@ -65,6 +64,11 @@ fi
 if [ "$deleteActionRuns" == "true" ]; then
     source "$SCRIPT_DIR/delete-all-action-runs.sh"
     delete_all_action_runs
+fi
+
+if [ "$deleteAllDeployments" == "true" ]; then
+    source "$SCRIPT_DIR/delete-all-deployments.sh"
+    delete_all_deployments
 fi
 
 if [ "$deleteReleases" == "true" ]; then
