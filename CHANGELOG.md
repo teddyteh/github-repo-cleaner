@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/teddyteh/github-repo-cleaner/compare/v1.0.3...v1.1.0) (2023-09-05)
+
+
+### Features
+
+* add remove deployments ([05c99ea](https://github.com/teddyteh/github-repo-cleaner/commit/05c99ea0e017ee4611d734b95683b0b7fdf946d9))
+
 ## [1.0.3](https://github.com/teddyteh/github-repo-cleaner/compare/v1.0.2...v1.0.3) (2023-09-04)
 
 
